@@ -1,0 +1,16 @@
+{
+  "name": "ubs_locations",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^6.0.5",
+    "express": "^4.17.2"
+  }
+}
