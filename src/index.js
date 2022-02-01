@@ -4,6 +4,7 @@ const path = require('path')
 const fs = require('fs')
 
 const log = require('./log')
+const calculateDistance = require('./utils/calculateDistance')
 
 const app = express()
 const port = 3000
@@ -13,9 +14,20 @@ app.use(express.json())
 const locationsFromCSV = [];
 
 app.get('/', (req, res) => {
-  // req.header('latitude'),  req.header('longitude'),  req.header('range'))
+  log('searching locations to', req.header('latitude'), req.header('longitude'), req.header('range'))
 
-  res.json({ locations: locationsFromCSV })
+  const locations =
+    locationsFromCSV.filter((location) => {
+      const distance = calculateDistance(
+        parseFloat(req.header('latitude')),
+        parseFloat(req.header('longitude')),
+        location.latitude,
+        location.longitude
+      )
+      return distance < parseFloat(req.header('range'))
+    })
+  log('found locations', locations.length)
+  res.json({ locations })
 })
 
 const startApp = () => {
@@ -29,7 +41,11 @@ log('start csv')
 parse(content,{
   delimiter: ';',
   comment: '#',
-  columns: true
+  columns: (header) => header.map((label) => label.toLowerCase()),
+  cast: (value, context) => {
+    if (context.column === 'latitude' || context.column === 'longitude') return parseFloat(value.replace(',', '.'));
+    return value;
+  },
 }, (err, records) => {
   locationsFromCSV.push(...records)
   log('end csv, quantity', locationsFromCSV.length)
