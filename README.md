@@ -27,6 +27,7 @@ curl --location --request GET 'http://localhost:3000' \
 --header 'longitude: -47.884101' \
 --header 'range: 5'
 ```
+Obs: range is in kilometers
 
 ### Data
 

@@ -16,16 +16,15 @@ const locationsFromCSV = [];
 app.get('/', (req, res) => {
   log('searching locations to', req.header('latitude'), req.header('longitude'), req.header('range'))
 
-  const locations =
-    locationsFromCSV.filter((location) => {
-      const distance = calculateDistance(
-        parseFloat(req.header('latitude')),
-        parseFloat(req.header('longitude')),
-        location.latitude,
-        location.longitude
-      )
-      return distance < parseFloat(req.header('range'))
-    })
+  const locations =  locationsFromCSV?.reduce((acc, location) => {
+    const distance = calculateDistance(
+      parseFloat(req.header('latitude')),
+      parseFloat(req.header('longitude')),
+      location.latitude,
+      location.longitude
+    )
+    return distance < parseFloat(req.header('range')) ? [...acc, {...location, distancia: distance.toFixed(2) }] : acc
+  }, [])
   log('found locations', locations.length)
   res.json({ locations })
 })
