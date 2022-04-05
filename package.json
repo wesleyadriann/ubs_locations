@@ -12,5 +12,8 @@
   "dependencies": {
     "csv": "^6.0.5",
     "express": "^4.17.2"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
