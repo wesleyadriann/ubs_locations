@@ -2,14 +2,16 @@ const express = require('express')
 const { parse } = require('csv')
 const path = require('path')
 const fs = require('fs')
+const cors = require('cors')
 
 const log = require('./log')
 const calculateDistance = require('./utils/calculateDistance')
 
 const app = express()
 const port = process.env.PORT ?? 3000
-app.use(express.json())
 
+app.use(express.json())
+app.use(cors())
 
 const locationsFromCSV = [];
 
