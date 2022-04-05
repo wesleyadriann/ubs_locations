@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "node ./src",
     "start": "node ./src"
   },
   "keywords": [],
