@@ -2,7 +2,7 @@
     UBS locations
 </h1>
 <h4 align="center">
-    Search UBS using latitude and longitude in max range
+    Search UBS (Unidades Básicas de Saúde - Basic Health Units) using latitude and longitude in max range
 </h3>
 
 ### Run
@@ -31,4 +31,4 @@ Obs: range is in kilometers
 
 ### Data
 
-- [https://dados.gov.br/dataset/unidades-basicas-de-saude-ubs1/resource/ab86686d-c790-40c2-bbbd-5c355905868b?inner_span=True](https://dados.gov.br/dataset/unidades-basicas-de-saude-ubs1/resource/ab86686d-c790-40c2-bbbd-5c355905868b?inner_span=True)
+- [https://dados.gov.br/dataset/unidades-basicas-de-saude-ubs](https://dados.gov.br/dataset/unidades-basicas-de-saude-ubs)
